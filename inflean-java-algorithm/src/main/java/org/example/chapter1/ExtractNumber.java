@@ -34,4 +34,14 @@ public class ExtractNumber {
         return Integer.parseInt(sb.toString());
     }
 
+    // 155ms
+    private static int solution2(String input) {
+        int result = 0;
+        char[] chars = input.toCharArray();
+        for (char c : chars) {
+            if ('0' <= c && c <= '9') result = result * 10 + (c - '0');
+        }
+        return result;
+    }
+
 }
