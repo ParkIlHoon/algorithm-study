@@ -32,7 +32,7 @@ public class ContinuousSum {
         int pos = begin;
         int sum = 0;
 
-        while (begin <= number) {
+        while (begin < number) {
             if (pos >= number) {
                 begin++;
                 pos = begin;
