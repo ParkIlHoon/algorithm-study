@@ -3,14 +3,12 @@ package org.example.chapter3;
 import java.util.Scanner;
 
 /**
- * <h1>4. 연속 부분수열</h1>
- * N개의 수로 이루어진 수열이 주어집니다.
- * 이 수열에서 연속부분수열의 합이 특정숫자 M이 되는 경우가 몇 번 있는지 구하는 프로그램을 작성하세요.
+ * <h1>5. 연속된 자연수의 합</h1>
+ * N입력으로 양의 정수 N이 입력되면 2개 이상의 연속된 자연수의 합으로 정수 N을 표현하는 방법의 가짓수를 출력하는 프로그램을 작성하세요.
  *
  * <ul>
  *     <li>입력 :
- *          <pre>{@code 8 6}</pre>
- *          <pre>{@code 1 2 1 3 1 1 1 2}</pre>
+ *          <pre>{@code 15}</pre>
  *     </li>
  *
  *     <li>출력 :
@@ -18,43 +16,37 @@ import java.util.Scanner;
  *     </li>
  * </ul>
  */
-public class Sequence {
+public class ContinuousSum {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int count = sc.nextInt();
         int number = sc.nextInt();
-        int[] numbers = new int[count];
 
-        for (int i = 0; i < count; i++) {
-            numbers[i] = sc.nextInt();
-        }
-
-        System.out.println(solution(number, numbers));
+        System.out.println(solution(number));
     }
 
-    private static int solution(int number, int[] numbers) {
+    private static int solution(int number) {
         int result = 0;
-
-        int begin = 0;
-        int pos = 0;
+        int begin = 1;
+        int pos = begin;
         int sum = 0;
-        while (begin < numbers.length) {
-            if (pos >= numbers.length) {
+
+        while (begin <= number) {
+            if (pos >= number) {
                 begin++;
                 pos = begin;
                 sum = 0;
                 continue;
             }
 
-            sum += numbers[pos];
+            sum += pos;
 
             if (sum == number) {
+                result++;
                 begin++;
                 pos = begin;
                 sum = 0;
-                result++;
             } else if (sum > number) {
                 begin++;
                 pos = begin;
