@@ -19,7 +19,7 @@ import java.util.Scanner;
  *     </li>
  * </ul>
  */
-public class TwoPointersAlgorithm {
+public class MergeTwoArrays {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
