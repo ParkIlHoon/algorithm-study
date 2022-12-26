@@ -74,4 +74,19 @@ public class LongestContinuousSum {
         return maxLength;
     }
 
+    private static int solution2(int length, int chance, int[] arr) {
+        int answer = 0, cnt = 0, lt =0;
+        for (int rt = 0; rt < length; rt++) {
+
+            if (arr[rt] == 0) cnt++;
+            while (cnt > chance) {
+                if (arr[lt] == 0) cnt--;
+                lt++;
+            }
+            answer = Math.max(answer, rt - lt + 1);
+        }
+
+        return answer;
+    }
+
 }

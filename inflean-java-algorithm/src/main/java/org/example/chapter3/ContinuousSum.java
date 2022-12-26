@@ -59,4 +59,41 @@ public class ContinuousSum {
         return result;
     }
 
+    private static int solution2(int number) {
+        int answer = 0, sum = 0, lt = 0;
+        int m = number / 2 + 1;
+        int[] arr = new int[m];
+
+        for (int i = 0; i < m; i++) {
+            arr[i] = i + 1;
+        }
+
+        for (int rt = 0; rt < m; rt++) {
+            sum += arr[rt];
+
+            if (sum == number) answer++;
+
+            while (sum >= number) {
+                sum -= arr[lt++];
+                if (sum == number) answer++;
+            }
+        }
+
+        return answer;
+    }
+
+    private static int solution3(int number) {
+        int answer = 0, cnt = 1;
+
+        number--;
+        while (number > 0) {
+            cnt++;
+            number = number - cnt;
+
+            if (number % cnt == 0) answer++;
+        }
+
+        return answer;
+    }
+
 }
