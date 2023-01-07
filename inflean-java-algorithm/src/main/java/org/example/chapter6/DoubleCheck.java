@@ -1,5 +1,7 @@
 package org.example.chapter6;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class DoubleCheck {
@@ -23,6 +25,24 @@ public class DoubleCheck {
             }
         }
 
+        return "U";
+    }
+
+    private static String solution2(int[] students) {
+        HashMap<Integer, Boolean> map = new HashMap<>();
+        for (int i = 0; i < students.length; i++) {
+            if (map.containsKey(students[i])) return "D";
+            map.put(i, true);
+        }
+
+        return "U";
+    }
+
+    private static String solution3(int[] students) {
+        Arrays.sort(students);
+        for (int i = 1; i < students.length; i++) {
+            if (students[i-1] == students[i]) return "D";
+        }
         return "U";
     }
 }

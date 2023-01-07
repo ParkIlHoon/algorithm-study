@@ -56,4 +56,42 @@ public class EmergencyRoom {
             index--;
         }
     }
+
+    private static int solution2(int[] patients, int target) {
+        Queue<Patient> queue = new LinkedList<>();
+        for (int i = 0; i < patients.length; i++) {
+            queue.add(new Patient(i, patients[i]));
+        }
+
+        int result = 1;
+        while (!queue.isEmpty()) {
+            Patient patient = queue.poll();
+            for (Patient other : queue) {
+                if (other.priority > patient.priority) {
+                    queue.add(patient);
+                    patient = null;
+                    break;
+                }
+            }
+            if (patient != null) {
+                if (patient.id == target) {
+                    return result;
+                } else {
+                    result++;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    public static class Patient {
+        public int id;
+        public int priority;
+
+        public Patient(int id, int priority) {
+            this.id = id;
+            this.priority = priority;
+        }
+    }
 }
