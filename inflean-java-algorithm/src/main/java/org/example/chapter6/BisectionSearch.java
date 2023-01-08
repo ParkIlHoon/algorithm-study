@@ -38,4 +38,25 @@ public class BisectionSearch {
 
         return result;
     }
+
+    private static int solution2(int[] numbers, int target) {
+        int lt = 0;
+        int rt = numbers.length - 1;
+
+        Arrays.sort(numbers);
+
+        while (lt <= rt) {
+            int mid = (lt + rt) / 2;
+
+            if (numbers[mid] == target) return mid + 1;
+
+            if (numbers[mid] > target) {
+                rt = mid - 1;
+            } else if (numbers[mid] < target) {
+                lt = mid + 1;
+            }
+        }
+
+        return -1;
+    }
 }
