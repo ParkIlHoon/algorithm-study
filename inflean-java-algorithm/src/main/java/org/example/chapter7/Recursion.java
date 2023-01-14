@@ -8,7 +8,14 @@ public class Recursion {
         Scanner sc = new Scanner(System.in);
 //        solution(sc.nextInt());
 //        printBinary(11);
-        System.out.println(factorial(5));
+//        System.out.println(factorial(5));
+
+        int f = 45;
+        fibo = new int[f + 1];
+        fibonacci(f);
+        for (int i = 0; i <= f; i++) {
+            System.out.print(fibo[i] + " ");
+        }
     }
 
     private static void solution(int num) {
@@ -28,6 +35,16 @@ public class Recursion {
             return 1;
         } else {
             return num * factorial(num - 1);
+        }
+    }
+
+    private static int[] fibo;
+    private static int fibonacci(int num) {
+        if (fibo[num] > 0) return fibo[num];
+        if (num == 1 || num == 2) {
+            return fibo[num] = 1;
+        } else {
+            return fibo[num] = fibonacci(num - 2) + fibonacci(num - 1);
         }
     }
 }
